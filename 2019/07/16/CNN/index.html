@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Meditation">
 <meta property="og:description" content="About input and output  input and output of conv layer are (sample,channel,height,width),like(1,64,112,112); input and output of dense layer are (sample, feature),like(1,4096) About the Channel: the i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T08:36:36.381Z">
+<meta property="og:updated_time" content="2019-07-16T09:12:57.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN">
 <meta name="twitter:description" content="About input and output  input and output of conv layer are (sample,channel,height,width),like(1,64,112,112); input and output of dense layer are (sample, feature),like(1,4096) About the Channel: the i">
@@ -303,7 +303,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  101
+                  226
                 </span>
               
 
@@ -332,9 +332,9 @@
 <ol>
 <li>input and output of conv layer are (sample,channel,height,width),like(1,64,112,112); input and output of dense layer are (sample, feature),like(1,4096)</li>
 <li>About the Channel:<ul>
-<li>the initial�channels�is up to the type of picture, like RGB;</li>
-<li>in_channels�of cnn layer is the number of feather �map( the depth of kernel), which is equal to the out_channels of the previous kernel�;</li>
-<li>out_channels�depends on the number of kernels, and will produce the same number of feature maps which is the next kernel’s�in_channels.</li>
+<li>the initial channels is up to the type of picture, like RGB;</li>
+<li>in_channels of cnn layer is the number of feather map( the depth of kernel), which is equal to the out_channels of the previous kernel;</li>
+<li>out_channels depends on the number of kernels, and will produce the same number of feature maps which is the next kernel’s in_channels.</li>
 </ul>
 </li>
 </ol>
@@ -343,9 +343,43 @@
 <ol>
 <li>Lenet</li>
 <li>AlexNet</li>
-<li>VGG</li>
-<li>NiN</li>
+<li>VGG: <ul>
+<li>vgg_block: Conv2D + MaxPool2D</li>
+<li>8 conv + 3 Dense</li>
+</ul>
+</li>
+<li>NiN<ul>
+<li>Nin_block: Conv2D + Con2D(kernel_size = 1) * 2</li>
+<li>reduce the size of model</li>
+<li>increase the training time, compared to VGG</li>
+<li>turn 4-D output into 2-D output with setting the channel size of nin_block(10) to the number of labels. </li>
+<li>using nn.GlobalAvgPool2D() and nn.Flatten()</li>
+</ul>
+</li>
+<li>GoogleNet<ul>
+<li>inception block</li>
+<li>parallelized </li>
+<li>5 blocks, connected with nn.MaxPool2D(pool_size = 3, strides = 2, padding = 1)</li>
+<li>end up with Dense(10)</li>
+<li>complexity is relatively low</li>
+</ul>
+</li>
 </ol>
+<hr>
+<p><strong>batch normalization</strong></p>
+<ol>
+<li><p>for dense</p>
+</li>
+<li><p>for conv : between conv and activation</p>
+<figure class="highlight plain"><figcaption><span>norm]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.add(nn.Conv2D(16,kernel_size = 5),BatchNorm(16,num_dims = 4), nn.Activation(&apos;sigmoid&apos;))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for prediction</p>
+</li>
+</ol>
+<ul>
+<li>could make the intermediate output of neuron network more stable</li>
+<li>BatchNorm class from Gluon could be useful and auto</li>
+</ul>
 
       
     </div>
