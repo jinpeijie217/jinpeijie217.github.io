@@ -287,6 +287,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/16/CNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/CNN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -305,7 +315,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  226
+                  225
                 </span>
               
 
@@ -375,7 +385,7 @@
 <li><p>for dense</p>
 </li>
 <li><p>for conv : between conv and activation</p>
-<figure class="highlight plain"><figcaption><span>norm]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.add(nn.Conv2D(16,kernel_size = 5),BatchNorm(16,num_dims = 4), nn.Activation(&apos;sigmoid&apos;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.add(nn.Conv2D(16,kernel_size = 5),BatchNorm(16,num_dims = 4), nn.Activation(&apos;sigmoid&apos;))</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>for prediction</p>
 </li>
@@ -476,6 +486,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/15/start-0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/start-0/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -813,6 +833,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'DrzMnt5IoV27Bq25p8V4Y1qy-gzGzoHsz',
+        appKey: 'V3sWVvVU2j2h1qCamgIWMgF9',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
