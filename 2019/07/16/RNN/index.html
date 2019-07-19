@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Meditation">
 <meta property="og:description" content="RNN use the hidden state to store the previous memory RNN using stochastic sampling and neighbouring sampling are a little different for parameters explostion, we could use clip gradient with a thres">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-19T09:11:00.910Z">
+<meta property="og:updated_time" content="2019-07-19T09:14:58.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNN">
 <meta name="twitter:description" content="RNN use the hidden state to store the previous memory RNN using stochastic sampling and neighbouring sampling are a little different for parameters explostion, we could use clip gradient with a thres">
@@ -318,7 +318,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  166
+                  165
                 </span>
               
 
@@ -353,9 +353,17 @@
 </li>
 <li>models:</li>
 </ol>
-<p><strong>GRU: Gated Recurrent Unit</strong><br>a. reset gate(decide whether to discard the previous hidden state) + update gate(decide whether to update the current hidden state)</p>
-<h2 id="b-reset-gate-is-good-for-short-term-dependency-update-gate-is-good-for-long-term-dependency"><a href="#b-reset-gate-is-good-for-short-term-dependency-update-gate-is-good-for-long-term-dependency" class="headerlink" title="b. reset gate is good for short-term dependency, update gate is good for long-term dependency"></a>b. reset gate is good for short-term dependency, update gate is good for long-term dependency</h2><p><strong>LSTM: long short-term memory</strong><br>a. input gate + forget gate + output gate + memory cell</p>
-<h2 id="b-good-to-avoid-gradient-vanishing-because-the-update-is-addition-which-could-restore-the-long-term-memory"><a href="#b-good-to-avoid-gradient-vanishing-because-the-update-is-addition-which-could-restore-the-long-term-memory" class="headerlink" title="b. good to avoid gradient vanishing, because the update is addition which could restore the long-term memory"></a>b. good to avoid gradient vanishing, because the update is addition which could restore the long-term memory</h2><ol start="6">
+<p><strong>GRU: Gated Recurrent Unit</strong></p>
+<ul>
+<li>reset gate(decide whether to discard the previous hidden state) + update gate(decide whether to update the current hidden state)</li>
+<li>reset gate is good for short-term dependency, update gate is good for long-term dependency</li>
+</ul>
+<p><strong>LSTM: long short-term memory</strong></p>
+<ul>
+<li>input gate + forget gate + output gate + memory cell</li>
+<li>good to avoid gradient vanishing, because the update is addition which could restore the long-term memory</li>
+</ul>
+<ol start="6">
 <li>deep recurrent NN consists of more hidden layers. In addtion, hidden units (or hidden_size) is hyper parameter as well</li>
 <li>both direction of RNN is useful for the sequence data which depend both on forehead and backhead info</li>
 </ol>
@@ -450,17 +458,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -502,22 +501,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-reset-gate-is-good-for-short-term-dependency-update-gate-is-good-for-long-term-dependency"><span class="nav-number">1.</span> <span class="nav-text">b. reset gate is good for short-term dependency, update gate is good for long-term dependency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-good-to-avoid-gradient-vanishing-because-the-update-is-addition-which-could-restore-the-long-term-memory"><span class="nav-number">2.</span> <span class="nav-text">b. good to avoid gradient vanishing, because the update is addition which could restore the long-term memory</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
