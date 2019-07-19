@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Meditation">
 <meta property="og:description" content="About input and output  input and output of conv layer are (sample,channel,height,width),like(1,64,112,112); input and output of dense layer are (sample, feature),like(1,4096) About the Channel: the i">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-16T10:18:51.124Z">
+<meta property="og:updated_time" content="2019-07-19T07:04:20.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN">
 <meta name="twitter:description" content="About input and output  input and output of conv layer are (sample,channel,height,width),like(1,64,112,112); input and output of dense layer are (sample, feature),like(1,4096) About the Channel: the i">
@@ -318,7 +318,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  225
+                  293
                 </span>
               
 
@@ -379,6 +379,18 @@
 <li>complexity is relatively low</li>
 </ul>
 </li>
+<li>ResNet<ul>
+<li>designed to deal with higher loss after adding more layers</li>
+<li>residual block: two 3<em>3 Conv2D, one 1</em>1 Conv2D</li>
+<li>similar structure to GoogleNET, much easier to modify</li>
+</ul>
+</li>
+<li>DenseNet<ul>
+<li>compare to Resnet using addition to connect, DenseNet uses junction </li>
+<li>include dense block (nd.concat(X,Y,dim = 1)) + transition layer</li>
+<li>dense block: define the concatenation of input and output, transition layer: control the numbe rof channels, simplify the model</li>
+</ul>
+</li>
 </ol>
 <hr>
 <p><strong>batch normalization</strong></p>
@@ -396,6 +408,7 @@
 <li>BatchNorm class from Gluon could be useful and auto</li>
 </ul>
 <a id="more"></a>
+
 
 
 
@@ -505,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

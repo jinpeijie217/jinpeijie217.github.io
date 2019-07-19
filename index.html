@@ -242,6 +242,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/JinDic-ENG/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Meditation">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/19/JinDic-ENG/" itemprop="url">JinDic_ENG</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-19T14:52:32+08:00">
+                2019-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/19/JinDic-ENG/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/19/JinDic-ENG/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  13
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#Vocabulary<br><strong>hard to remember</strong></p>
+<ol>
+<li>injunction : forbid</li>
+<li>junction: connection</li>
+<li>concatenate : connect</li>
+<li>stochastic : random </li>
+<li>perplexity </li>
+<li>threshold </li>
+<li></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/embedding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -783,7 +941,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  166
                 </span>
               
 
@@ -810,7 +968,22 @@
       
         
           
-            <p>?????</p>
+            <ol>
+<li>RNN use the hidden state to store the previous memory</li>
+<li>RNN using stochastic sampling and neighbouring sampling are a little different</li>
+<li>for parameters explostion, we could use clip gradient with a threshold to control parameters</li>
+<li>perplexity : the expotentiation of crossentropy loss<ul>
+<li>the best: perp = 1 , the worst : perp = infinite , the baseline: perp &lt; the number of classification</li>
+</ul>
+</li>
+<li>models:</li>
+</ol>
+<p><strong>GRU: Gated Recurrent Unit</strong><br>a. reset gate(decide whether to discard the previous hidden state) + update gate(decide whether to update the current hidden state)</p>
+<h2 id="b-reset-gate-is-good-for-short-term-dependency-update-gate-is-good-for-long-term-dependency"><a href="#b-reset-gate-is-good-for-short-term-dependency-update-gate-is-good-for-long-term-dependency" class="headerlink" title="b. reset gate is good for short-term dependency, update gate is good for long-term dependency"></a>b. reset gate is good for short-term dependency, update gate is good for long-term dependency</h2><p><strong>LSTM: long short-term memory</strong><br>a. input gate + forget gate + output gate + memory cell</p>
+<h2 id="b-good-to-avoid-gradient-vanishing-because-the-update-is-addition-which-could-restore-the-long-term-memory"><a href="#b-good-to-avoid-gradient-vanishing-because-the-update-is-addition-which-could-restore-the-long-term-memory" class="headerlink" title="b. good to avoid gradient vanishing, because the update is addition which could restore the long-term memory"></a>b. good to avoid gradient vanishing, because the update is addition which could restore the long-term memory</h2><ol start="6">
+<li>deep recurrent NN consists of more hidden layers. In addtion, hidden units (or hidden_size) is hyper parameter as well</li>
+<li>both direction of RNN is useful for the sequence data which depend both on forehead and backhead info</li>
+</ol>
 
           
         
@@ -932,7 +1105,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  225
+                  293
                 </span>
               
 
@@ -992,6 +1165,18 @@
 <li>5 blocks, connected with nn.MaxPool2D(pool_size = 3, strides = 2, padding = 1)</li>
 <li>end up with Dense(10)</li>
 <li>complexity is relatively low</li>
+</ul>
+</li>
+<li>ResNet<ul>
+<li>designed to deal with higher loss after adding more layers</li>
+<li>residual block: two 3<em>3 Conv2D, one 1</em>1 Conv2D</li>
+<li>similar structure to GoogleNET, much easier to modify</li>
+</ul>
+</li>
+<li>DenseNet<ul>
+<li>compare to Resnet using addition to connect, DenseNet uses junction </li>
+<li>include dense block (nd.concat(X,Y,dim = 1)) + transition layer</li>
+<li>dense block: define the concatenation of input and output, transition layer: control the numbe rof channels, simplify the model</li>
 </ul>
 </li>
 </ol>
@@ -1249,7 +1434,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
