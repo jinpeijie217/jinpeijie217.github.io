@@ -242,6 +242,222 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/CNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Meditation">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/16/CNN/" itemprop="url">CNN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T16:10:00+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/16/CNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/CNN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  293
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>About input and output</strong></p>
+<ol>
+<li>input and output of conv layer are (sample,channel,height,width),like(1,64,112,112); input and output of dense layer are (sample, feature),like(1,4096)</li>
+<li>About the Channel:<ul>
+<li>the initial channels is up to the type of picture, like RGB;</li>
+<li>in_channels of cnn layer is the number of feather map( the depth of kernel), which is equal to the out_channels of the previous kernel;</li>
+<li>out_channels depends on the number of kernels, and will produce the same number of feature maps which is the next kernel’s in_channels.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>About CNN models</strong></p>
+<ol>
+<li>Lenet</li>
+<li>AlexNet</li>
+<li>VGG: <ul>
+<li>vgg_block: Conv2D + MaxPool2D</li>
+<li>8 conv + 3 Dense</li>
+</ul>
+</li>
+<li>NiN<ul>
+<li>Nin_block: Conv2D + Con2D(kernel_size = 1) * 2</li>
+<li>reduce the size of model</li>
+<li>increase the training time, compared to VGG</li>
+<li>turn 4-D output into 2-D output with setting the channel size of nin_block(10) to the number of labels. </li>
+<li>using nn.GlobalAvgPool2D() and nn.Flatten()</li>
+</ul>
+</li>
+<li>GoogleNet<ul>
+<li>inception block</li>
+<li>parallelized </li>
+<li>5 blocks, connected with nn.MaxPool2D(pool_size = 3, strides = 2, padding = 1)</li>
+<li>end up with Dense(10)</li>
+<li>complexity is relatively low</li>
+</ul>
+</li>
+<li>ResNet<ul>
+<li>designed to deal with higher loss after adding more layers</li>
+<li>residual block: two 3<em>3 Conv2D, one 1</em>1 Conv2D</li>
+<li>similar structure to GoogleNET, much easier to modify</li>
+</ul>
+</li>
+<li>DenseNet<ul>
+<li>compare to Resnet using addition to connect, DenseNet uses junction </li>
+<li>include dense block (nd.concat(X,Y,dim = 1)) + transition layer</li>
+<li>dense block: define the concatenation of input and output, transition layer: control the numbe rof channels, simplify the model</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>batch normalization</strong></p>
+<ol>
+<li><p>for dense</p>
+</li>
+<li><p>for conv : between conv and activation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.add(nn.Conv2D(16,kernel_size = 5),BatchNorm(16,num_dims = 4), nn.Activation(&apos;sigmoid&apos;))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for prediction</p>
+</li>
+</ol>
+<ul>
+<li>could make the intermediate output of neuron network more stable</li>
+<li>BatchNorm class from Gluon could be useful and auto</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/16/CNN/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/start-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -432,7 +648,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

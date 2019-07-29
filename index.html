@@ -242,6 +242,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Meditation">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/29/API/" itemprop="url">API</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-29T16:55:18+08:00">
+                2019-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/29/API/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/29/API/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  149
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Flask</strong><br>get text input and fixed model to predict</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask,jsonify,request</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import flask</span><br><span class="line">import io</span><br><span class="line">import json</span><br><span class="line">from flask import request</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import re</span><br><span class="line">import gensim</span><br><span class="line">from gensim.models import Word2Vec</span><br><span class="line">import kashgari</span><br><span class="line">from kashgari.embeddings import WordEmbeddings,CustomEmbedding</span><br><span class="line">from kashgari.tasks.seq_labeling import BLSTMCRFModel</span><br><span class="line">from kashgari.embeddings import BERTEmbedding</span><br><span class="line"></span><br><span class="line"># initialize our Flask application and the Keras model</span><br><span class="line">app = flask.Flask(__name__)</span><br><span class="line"></span><br><span class="line">model = None</span><br><span class="line"></span><br><span class="line">def load_model():</span><br><span class="line">	global model</span><br><span class="line">	my_embedding = BERTEmbedding(&quot;C:/Users/bpk1036/OneDrive - Varian Medical Systems/Desktop/crash_Jin/chinese_L-12_H-768_A-12&quot;, 200)</span><br><span class="line">	model0 = BLSTMCRFModel(my_embedding)</span><br><span class="line">	model = model0.load_model(&apos;C:/NLP_API/mymodel/model_diabetes&apos;)</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/predict&quot;, methods=[&quot;POST&quot;])</span><br><span class="line">def predict():</span><br><span class="line">	text = request.get_data().decode(&apos;utf8&apos;)</span><br><span class="line">	print(text)</span><br><span class="line">	</span><br><span class="line">	text = [i for i in text]</span><br><span class="line"></span><br><span class="line">	preds = model.predict(text)</span><br><span class="line"></span><br><span class="line">#	print(text)</span><br><span class="line"></span><br><span class="line">	return jsonify(&#123;&apos;result&apos;:preds&#125;)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">	app.config[&apos;JSON_AS_ASCII&apos;] = False</span><br><span class="line">	load_model()</span><br><span class="line">	app.run(debug = True, lazy_apps = True)</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/25/NLP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -956,7 +1107,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  13
+                  21
                 </span>
               
 
@@ -991,6 +1142,10 @@
 <li>stochastic : random </li>
 <li>perplexity </li>
 <li>threshold </li>
+<li>saddle : on horse </li>
+<li>inspect: supervise</li>
+<li>consistent</li>
+<li>advocate: promote</li>
 <li></li>
 </ol>
 
@@ -1675,222 +1830,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/CNN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Meditation">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/16/CNN/" itemprop="url">CNN</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T16:10:00+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/16/CNN/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/CNN/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  293
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>About input and output</strong></p>
-<ol>
-<li>input and output of conv layer are (sample,channel,height,width),like(1,64,112,112); input and output of dense layer are (sample, feature),like(1,4096)</li>
-<li>About the Channel:<ul>
-<li>the initial channels is up to the type of picture, like RGB;</li>
-<li>in_channels of cnn layer is the number of feather map( the depth of kernel), which is equal to the out_channels of the previous kernel;</li>
-<li>out_channels depends on the number of kernels, and will produce the same number of feature maps which is the next kernel’s in_channels.</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p><strong>About CNN models</strong></p>
-<ol>
-<li>Lenet</li>
-<li>AlexNet</li>
-<li>VGG: <ul>
-<li>vgg_block: Conv2D + MaxPool2D</li>
-<li>8 conv + 3 Dense</li>
-</ul>
-</li>
-<li>NiN<ul>
-<li>Nin_block: Conv2D + Con2D(kernel_size = 1) * 2</li>
-<li>reduce the size of model</li>
-<li>increase the training time, compared to VGG</li>
-<li>turn 4-D output into 2-D output with setting the channel size of nin_block(10) to the number of labels. </li>
-<li>using nn.GlobalAvgPool2D() and nn.Flatten()</li>
-</ul>
-</li>
-<li>GoogleNet<ul>
-<li>inception block</li>
-<li>parallelized </li>
-<li>5 blocks, connected with nn.MaxPool2D(pool_size = 3, strides = 2, padding = 1)</li>
-<li>end up with Dense(10)</li>
-<li>complexity is relatively low</li>
-</ul>
-</li>
-<li>ResNet<ul>
-<li>designed to deal with higher loss after adding more layers</li>
-<li>residual block: two 3<em>3 Conv2D, one 1</em>1 Conv2D</li>
-<li>similar structure to GoogleNET, much easier to modify</li>
-</ul>
-</li>
-<li>DenseNet<ul>
-<li>compare to Resnet using addition to connect, DenseNet uses junction </li>
-<li>include dense block (nd.concat(X,Y,dim = 1)) + transition layer</li>
-<li>dense block: define the concatenation of input and output, transition layer: control the numbe rof channels, simplify the model</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p><strong>batch normalization</strong></p>
-<ol>
-<li><p>for dense</p>
-</li>
-<li><p>for conv : between conv and activation</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.add(nn.Conv2D(16,kernel_size = 5),BatchNorm(16,num_dims = 4), nn.Activation(&apos;sigmoid&apos;))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>for prediction</p>
-</li>
-</ol>
-<ul>
-<li>could make the intermediate output of neuron network more stable</li>
-<li>BatchNorm class from Gluon could be useful and auto</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/16/CNN/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1941,7 +1880,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
